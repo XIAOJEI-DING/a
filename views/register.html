@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>用户登入界面</title>
+ <!-- <link rel="stylesheet" type="text/css" href="stylesheets/demo.css" > -->
+ <!-- <script type="text/javascript" src="javascripts/demo.js"></script> -->
+</head>
+<body>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+   }
+   /*内外边距*/
+   body{
+    background-color: #f2f2f2;
+   }
+   /*背景颜色*/
+   form{
+    width: 1200px;
+    margin: 50px auto;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 5px #ccc;
+   }
+   /*宽，外边距；削圆；背景颜色；盒子阴影*/
+   header{
+    width: 1200px;
+    height: 50px;
+    background-color: #7B68EE;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 10px;
+   }
+   /*宽，高，背景颜色，削圆，字体颜色，大小；行高；文本居中，加粗，字符间距*/
+   div{
+    height: 120px;
+    width: 1200px;
+    margin-left: 50px;
+    position: relative;
+   }
+   /*高，宽，左边距，相对定位*/
+   div>label{
+    font-weight: bold;
+    font-size: 18px;
+    position: absolute;
+    top: 50px;
+   }
+   /*加粗，字体大小，绝对定位，上*/
+   div>label::before{
+    content: '* ';
+    color: #00f;
+   }
+   /*在前面添加文本，字体颜色*/
+   div>input{
+    width: 595px;
+    height: 40px;
+    position: absolute;
+    right: 420px;
+    top: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 5px;
+   }
+   /*宽；高；绝对定位；右；上；削圆；边框；内边距*/
+   div>input:focus{
+    outline: none;
+    box-shadow: 0px 0px 8px 3px #7B68EE;
+    transition-duration: 0.5s;
+   }
+   /*清除激活后的边框；盒子阴影；过度事件0.5s；*/
+   div>p{
+    width: 60%;
+    height: 30px;
+    border-bottom: .5px solid #7B68EE;
+    line-height: 30px;
+    padding-left: 15px;
+    position: absolute;
+    font-size: 14px;
+    top: 86px;
+   }
+   /*宽；高；下边框；行高；内边距；绝对定位，上；字体大小*/
+   div>span{
+    position: absolute;
+    left: 790px;
+    line-height: 120px;
+   }
+   /*绝对定位，左，行高*/
+   footer{
+    margin-top: 20px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+   }
+   /*上边距；高；文本居中；行高*/
+   footer>label{
+    margin: 0 10px;
+    cursor:pointer;
+   }
+   /*外边距；小手*/
+   footer>.btn{
+    width: 120px;
+    height: 30px;
+    background-color: #6495ED; 
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    cursor:pointer;
+   }
+    </style>
+ <form id="forms" method="post" action="/register">
+ <!-- 头部 -->
+ <header>--账户信息--</header>
+ <!-- 内容 -->
+ <section>
+ <div>
+ <label>用户名：</label>
+ <input type="text" id="userName" name="user_name" placeholder="用户设置成功后不可修改" />
+ <span></span>
+ <p></p>
+ </div>
+ <div>
+ <label>登陆密码：</label>
+ <input type="password" id="password"name="user_pw" placeholder="6-20位字母，数字或符号"/>
+ <span></span>
+ <p></p>
+ </div>
+ <div>
+ <label>确认密码：</label>
+ <input type="password" id="passwordTwos" placeholder="请再次输入密码"/>
+ <span></span>
+ <p></p>
+ </div>
+ <div>
+ <label>别名：</label>
+ <input type="text" id="theName" name="other_name" placeholder="请输入别名，中文且最多五位" />
+ <span></span>
+ <p></p>
+ </div>
+ <div>
+ <label>身份证号：</label>
+ <input type="text" id="identity" name="user_id" placeholder="请输入身份证号" />
+ <span></span>
+ <p></p>
+ </div>
+ <div>
+ <label>邮箱：</label>
+ <input type="email" id="mailbox" name="user_email" placeholder="请输入正确邮箱格式" />
+ <span></span>
+ <p></p>
+ </div>
+ <div>
+ <label>手机号码:</label>
+ <input type="text" id="phone" name="user_tel" placeholder="请输入手机号码" />
+ <span></span>
+ <p></p>
+ </div>
+ </section>
+ <!-- 结尾 -->
+ <footer>
+ <hr/>
+ <input id="choose" type="checkbox"/>
+ <label for="choose">我已阅读并同意遵守规定</label>
+ <input class="btn" id="register" type="submit" value="注册"/>
+ </footer>
+ </form>
+ <script>
+     window.onload = function(){
+ 
+ var btn = document.getElementById('btn');//提交按钮
+ var p = document.getElementsByTagName('p');//文字提示标签数组
+ var span = document.getElementsByTagName('span');//文字提示标签数组
+ var forms = document.getElementById('forms');//表单
+ var choose = document.getElementById('choose');//选择框
+ var userName = document.getElementById('userName');//用户名
+ var password = document.getElementById('password');//密码
+ var passwordTwos = document.getElementById('passwordTwos');//确认密码
+ var theName = document.getElementById('theName');//姓名
+ var identity = document.getElementById('identity');//身份证号
+ var mailbox = document.getElementById('mailbox');//邮箱
+ var phone = document.getElementById('phone');//电话号码
+ 
+ //正则表达式
+ var reg1 = /^[\w]{6,18}$/,//用户名 6--18位数字,字母,下划线_
+ reg2 = /^[\W\da-zA-Z_]{6,20}$/,//密码 6--20位数字,字母,任意字符
+ reg3 = /^[\u4e00-\u9fa5]{2,5}$/,//姓名 2-5为的汉子
+ reg4 = /^[1234568][\d]{16}[\dxX]$/,
+ //身份证号 第一个数字1234568，中间任意数字16位，结尾任意数字或者xX；
+ reg5 = /^[a-z1-9](?:\w|\-)+@[a-z\d]+\.[a-z]{2,4}$/i,
+ //邮箱 以字母或者数字1-9开头+(任意个数字字母下划线\-)+@+(任意字母数字)+.+(2-4个字母)
+ reg6 = /^[1][\d]{10}$/;//手机号 首个数字为1，后面10为任意数字
+ 
+ //校验
+ var n1 = false,
+ n2 = false,
+ n3 = false,
+ n4 = false,
+ n5 = false,
+ n6 = false,
+ n7 = false;
+ 
+ //用户名获得焦点时
+ userName.onfocus = function(){
+ span[0].innerHTML = '请输入6--18位数字,字母,下划线_';
+ span[0].style.color = 'green';
+ }
+ //用户名离开焦点时
+ userName.onblur = function(){
+ if(this.value == ''){
+ span[0].innerHTML = '用户名不能为空！';
+ span[0].style.color = 'red';
+ } else if(!reg1.test(this.value)){
+ span[0].innerHTML = '请输入6--18位数字,字母,下划线_';
+ span[0].style.color = 'red';
+ } else {
+ span[0].innerHTML = '格式正确!';
+ span[0].style.color = 'green';
+ return n1 = true;
+ }
+ }
+ 
+ //密码获得焦点时
+ password.onfocus = function(){
+ span[1].innerHTML = '请输入6--20位数字,字母,任意字符';
+ span[1].style.color = 'green';
+ }
+ //密码离开焦点时
+ password.onblur = function(){
+ if(this.value == ''){
+ span[1].innerHTML = '密码不能为空！';
+ span[1].style.color = 'red';
+ } else if(!reg2.test(this.value)){
+ span[1].innerHTML = '请输入6--20位数字,字母,任意字符';
+ span[1].style.color = 'red';
+ } else {
+ span[1].innerHTML = '格式正确!';
+ span[1].style.color = 'green';
+ return n2 = true;
+ }
+ }
+ 
+ //确认密码获得焦点时
+ passwordTwos.onfocus = function(){
+ span[2].innerHTML = '请确认两次密码一致';
+ span[2].style.color = 'green';
+ }
+ //确认密码离开焦点时
+ passwordTwos.onblur = function(){
+ if(this.value == ''){
+ span[2].innerHTML = '确认密码不能为空！';
+ span[2].style.color = 'red';
+ } else if(this.value != password.value){
+ span[2].innerHTML = '两次密码不相同';
+ span[2].style.color = 'red';
+ } else {
+ span[2].innerHTML = '确认密码正确!';
+ span[2].style.color = 'green';
+ return n3 = true;
+ }
+ }
+ 
+ //姓名获得焦点时
+ theName.onfocus = function(){
+ span[3].innerHTML = '请输入中文姓名';
+ span[3].style.color = 'green';
+ }
+ //姓名离开焦点时
+ theName.onblur = function(){
+ if(this.value == ''){
+ span[3].innerHTML = '姓名不能为空';
+ span[3].style.color = 'red';
+ } else if(!reg3.test(this.value)){
+ span[3].innerHTML = '请输入正确的中文姓名';
+ span[3].style.color = 'red';
+ } else {
+ span[3].innerHTML = '姓名正确！';
+ span[3].style.color = 'green';
+ return n4 = true;
+ }
+ }
+ 
+ //身份证号获得焦点时
+ identity.onfocus = function(){
+ span[4].innerHTML = '请输入您的身份证号';
+ span[4].style.color = 'green';
+ }
+ //身份证号离开焦点时
+ identity.onblur = function(){
+ if(this.value == ''){
+ span[4].innerHTML = '身份证号不能为空';
+ span[4].style.color = 'red';
+ } else if(!reg4.test(this.value)){
+ span[4].innerHTML = '身份证号格式不对';
+ span[4].style.color = 'red';
+ } else {
+ span[4].innerHTML = '身份证正确！';
+ span[4].style.color = 'green';
+ return n5 = true;
+ }
+ }
+ 
+ //邮箱获得焦点时
+ mailbox.onfocus = function(){
+ span[5].innerHTML = '请输入您的邮箱';
+ span[5].style.color = 'green';
+ }
+ //邮箱离开焦点时
+ mailbox.onblur = function(){
+ if(this.value == ''){
+ span[5].innerHTML = '邮箱不能为空';
+ span[5].style.color = 'red';
+ } else if(!reg5.test(this.value)){
+ span[5].innerHTML = '邮箱格式不对';
+ span[5].style.color = 'red';
+ } else {
+ span[5].innerHTML = '邮箱正确！';
+ span[5].style.color = 'green';
+ return n6 = true;
+ }
+ }
+ 
+ 
+ //手机号获得焦点时
+ phone.onfocus = function(){
+ span[6].innerHTML = '请输入您的手机号';
+ span[6].style.color = 'green';
+ }
+ //手机号离开焦点时
+ phone.onblur = function(){
+ if(this.value == ''){
+ span[6].innerHTML = '手机号不能为空';
+ span[6].style.color = 'red';
+ } else if(!reg6.test(this.value)){
+ span[6].innerHTML = '手机号格式不对';
+ span[6].style.color = 'red'; 
+ } else {
+ span[6].innerHTML = '手机号正确！';
+ span[6].style.color = 'green';
+ return n7 = true;
+ }
+ }
+ 
+ //提交按钮
+ forms.onsubmit = function(){
+ //正则表达式判断
+ // var regs = !reg1.test(userName.value)||!reg2.test(password.value)||password.value != passwordTwos.value||!reg3.test(theName.value)||!reg4.test(identity.value)||!reg5.test(mailbox.value)||!reg6.test(phone.value);
+ //变量判断
+ var regs = n1==false||n2==false||n3==false||n4==false||n5==false||n6==false||n7==false;
+ console.log(regs);
+ if(!regs == false){
+ alert('您 填 写 的 信 息 有 误 !');
+ return false;
+ } else if(choose.checked == false){
+ alert('请 先 点 击 确 认 已 阅 读 按 钮 ！');
+ return false;
+ } else {
+ alert('注 册 成 功 ！');
+ return true;
+ }
+ }
+  
+ 
+}
+ </script>
+</body>
+</html>

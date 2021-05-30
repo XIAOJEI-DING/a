@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+   }
+   /*内外边距*/
+   body{
+    background-color: #f2f2f2;
+   }
+   /*背景颜色*/
+   form{
+    width: 1200px;
+    margin: 50px auto;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 5px #ccc;
+   }
+   /*宽，外边距；削圆；背景颜色；盒子阴影*/
+   header{
+    width: 1200px;
+    height: 50px;
+    background-color: #7B68EE;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 10px;
+   }
+   /*宽，高，背景颜色，削圆，字体颜色，大小；行高；文本居中，加粗，字符间距*/
+   div{
+    height: 120px;
+    width: 1200px;
+    margin-left: 50px;
+    position: relative;
+   }
+   /*高，宽，左边距，相对定位*/
+   div>label{
+    font-weight: bold;
+    font-size: 18px;
+    position: absolute;
+    top: 50px;
+   }
+   /*加粗，字体大小，绝对定位，上*/
+   div>label::before{
+    content: '* ';
+    color: #00f;
+   }
+   /*在前面添加文本，字体颜色*/
+   div>input{
+    width: 595px;
+    height: 40px;
+    position: absolute;
+    right: 420px;
+    top: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 5px;
+   }
+   /*宽；高；绝对定位；右；上；削圆；边框；内边距*/
+   div>input:focus{
+    outline: none;
+    box-shadow: 0px 0px 8px 3px #7B68EE;
+    transition-duration: 0.5s;
+   }
+   /*清除激活后的边框；盒子阴影；过度事件0.5s；*/
+   div>p{
+    width: 60%;
+    height: 30px;
+    border-bottom: .5px solid #7B68EE;
+    line-height: 30px;
+    padding-left: 15px;
+    position: absolute;
+    font-size: 14px;
+    top: 86px;
+   }
+   /*宽；高；下边框；行高；内边距；绝对定位，上；字体大小*/
+   div>span{
+    position: absolute;
+    left: 790px;
+    line-height: 120px;
+   }
+   /*绝对定位，左，行高*/
+   footer{
+    margin-top: 20px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+   }
+   /*上边距；高；文本居中；行高*/
+   footer>label{
+    margin: 0 10px;
+    cursor:pointer;
+   }
+   /*外边距；小手*/
+   footer>.btn{
+    width: 120px;
+    height: 30px;
+    background-color: #6495ED; 
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    cursor:pointer;
+   }
