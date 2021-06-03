@@ -14,7 +14,7 @@ var categoryRouter=require('./routes/index');
 var singleproductRouter=require('./routes/index');
 var manageRouter=require('./routes/manage');
 var login1Router = require('./routes/login1');
-
+// var cartRouter = require('./routes/index');
 
 
 
@@ -49,6 +49,7 @@ app.use('/product',manageRouter);
 app.use('/login1', login1Router);
 // app.use('/category',categoryRouter);
 app.use('/single-product',singleproductRouter);
+// app.use('/cart',cartRouter);
 
 
 

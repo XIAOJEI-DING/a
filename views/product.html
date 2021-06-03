@@ -1,5 +1,5 @@
 <%- include public/header.html%>
-<script src="/javascripts/jquery-2.2.3.min.js"></script>
+<script src="/js/jquery-2.2.3.min.js"></script>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-2">
@@ -103,7 +103,7 @@
        //修改
        Array.from(document.getElementsByClassName('upd')).forEach(i => {
         i.onclick = function () {
-            alert(1);
+            alert('请修改');
             let ind = this.getAttribute('data_id');
             window.location.href = '/product/update/' + ind
         }

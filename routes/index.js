@@ -35,8 +35,12 @@ router.get('/single-product/:id',(req,res)=>{
 router.get('/checkout',(req,res)=>{
     res.render('checkout')
 });
-router.get('/cart',(req,res)=>{
-    res.render('cart')
+router.get('/cart/:id',(req,res)=>{
+  connection.query(`SELECT * FROM good WHERE id ="${req.params.id}" `, function (err, results, fields) {
+      res.render('cart', {
+        data: results
+      })
+    })
 });
 router.get('/confirmation',(req,res)=>{
     res.render('confirmation')
@@ -49,7 +53,7 @@ router.get('/login'),(req,res)=>{
 // router.get('/',(req,res)=>{
 //     res.render('single-product')
 // });router.get('/', function (req, res) {
- router.post('/category/find',function(req,res){
+ router.post('/find',function(req,res){
         let title = req.body.title1
         connection.query(`select * from good where title like '%${title}%'`,function(err,results) {
           console.log(results);

@@ -80,7 +80,7 @@ router.post('/update/:id', (req, res) => {
   console.log(user)
     let sqlStr1 =`update good set title='${user.title}',img='${user.img}',good_price='${user.price}',fee='${user.fee}',description='${user.description}'where id='${req.params.id}'`
   console.log(req.params.id);
-      connection.query(sqlStr1, (err, result) => {
+ connection.query(sqlStr1, (err, result) => {
         if(err) throw err;
           res.redirect('/product')
       })

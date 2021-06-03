@@ -18,31 +18,32 @@ router.post('/doLogin',async (req,res)=>{
   var username=req.body.username;
   var password=req.body.password;
 
- 
+
   var sql = `select username,password from administrator where username = '${username}' and password = '${password}'`;
   connection.query(sql, function (err, result) {
-      console.log(result);
-      // let result
-      if(err) throw err;
-      
-      
-      if (result =="") {
-        res.render('demo', {
-          title: "登录失败",
-          content: "用户或密码错误",
-          href: "/login1",
-          hrefTxt: "登录页"
-      })
-      } else {
-        req.session.username = username;
-        res.render('demo', {
-            title: "登录成功",
-            content: "立即跳转至后台",
-            href: "/product",
-            hrefTxt: "后台"
-        })
+    console.log(result);
+    // let result
+    if (err)
+      throw err;
+
+
+    if (result == "") {
+      res.render('demo', {
+        title: "登录失败",
+        content: "用户或密码错误",
+        href: "/login1",
+        hrefTxt: "登录页"
+      });
+    } else {
+      req.session.username = username;
+      res.render('demo', {
+        title: "登录成功",
+        content: "立即跳转至后台",
+        href: "/product",
+        hrefTxt: "后台"
+      });
     }
-})
+  })
 })
 router.get('/loginOut',function(req,res){
 

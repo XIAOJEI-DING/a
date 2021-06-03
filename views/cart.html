@@ -118,33 +118,39 @@
     <!-- End Banner Area -->
 
     <!--================Cart Area =================-->
+    <% for(let o of data){%>
     <section class="cart_area">
         <div class="container">
             <div class="cart_inner">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="table">
                         <thead>
                             <tr>
                                 <th scope="col">产品</th>
                                 <th scope="col">价格</th>
                                 <th scope="col">数量</th>
                                 <th scope="col">全部的</th>
+                                <th>
+                                    <input type="checkbox" id="allCheck" class="ck" scope="col"/>全选
+                                   </th>
+                                <th scope="col">操作</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="/img/cart.jpg" alt="">
+                                            <img src="/img/product/<%=o.img%>" alt="">
                                         </div>
                                         <div class="media-body">
-                                            <p>简约的多功能商店</p>
+                                            <p><%=o.title%></p>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>$ 360.00</h5>
+                                    <h5><%=o.good_price%></h5>
                                 </td>
                                 <td>
                                     <div class="product_count">
@@ -152,69 +158,21 @@
                                             class="input-text qty">
                                         <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                                             class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst > 0 ) result.value--;return false;"
                                             class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                     </div>
                                 </td>
                                 <td>
                                     <h5>$ 720.00</h5>
                                 </td>
+                                <td>
+                                    <input type="checkbox" class="ck" />
+                                   </td>
+                                <td>
+                                    <button class="del" >删除</button>
+                                   </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="/img/cart.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>简约的多功能商店</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$ 360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$ 720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="/img/cart.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>简约的多功能商店</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$ 360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$ 720.00</h5>
-                                </td>
+                            
                             </tr>
                             <tr class="bottom_button">
                                 <td>
@@ -305,6 +263,7 @@
             </div>
         </div>
     </section>
+    <%}%>
     <!--================End Cart Area =================-->
 
     <!-- start footer Area -->
